@@ -77,4 +77,14 @@ if st.button("🚀 Run ETL Pipeline"):
         st.dataframe(df.head())
 
         st.info("Pushing to Synapse...")
-        df.to_sql(syn_table.split('.')[-1], get_synapse_engine(), if_exists="replace", index=False, schema=s_
+        df.to_sql(
+            name=syn_table.split('.')[-1],
+            con=get_synapse_engine(),
+            if_exists="replace",
+            index=False,
+            schema=syn_table.split('.')[0]
+        )
+        st.success("✅ Data loaded to Synapse!")
+    except Exception as e:
+        st.error(f"❌ Error: {e}")
+
