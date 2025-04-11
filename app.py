@@ -28,20 +28,21 @@ with col3:
 # --- Source Configuration ---
 if "SQL Server" in sources:
     st.sidebar.subheader("SQL Server Config")
-    sql_host = st.sidebar.text_input("Host", value="localhost")
-    sql_db = st.sidebar.text_input("Database", value="SourceDB")
-    sql_user = st.sidebar.text_input("User", value="sa")
-    sql_pass = st.sidebar.text_input("Password", type="password")
-    sql_table = st.sidebar.text_input("Source Table", value="dbo.SourceTable")
+    sql_host = st.sidebar.text_input("Host", value="localhost", key="sql_host")
+    sql_db = st.sidebar.text_input("Database", value="SourceDB", key="sql_db")
+    sql_user = st.sidebar.text_input("User", value="sa", key="sql_user")
+    sql_pass = st.sidebar.text_input("Password", type="password", key="sql_pass")
+    sql_table = st.sidebar.text_input("Source Table", value="dbo.SourceTable", key="sql_table")
 
 # --- Sink Configuration ---
 if "Azure Synapse" in sinks:
     st.sidebar.subheader("Synapse Config")
-    syn_server = st.sidebar.text_input("Synapse Server", value="your-synapse.sql.azuresynapse.net")
-    syn_db = st.sidebar.text_input("Database", value="TargetDB")
-    syn_user = st.sidebar.text_input("User", value="syn_user")
-    syn_pass = st.sidebar.text_input("Password", type="password")
-    syn_table = st.sidebar.text_input("Target Table", value="dbo.TargetTable")
+    syn_server = st.sidebar.text_input("Synapse Server", value="your-synapse.sql.azuresynapse.net", key="syn_server")
+    syn_db = st.sidebar.text_input("Database", value="TargetDB", key="syn_db")
+    syn_user = st.sidebar.text_input("User", value="syn_user", key="syn_user")
+    syn_pass = st.sidebar.text_input("Password", type="password", key="syn_pass")
+    syn_table = st.sidebar.text_input("Target Table", value="dbo.TargetTable", key="syn_table")
+
 
 # --- ETL Engine ---
 def get_sqlserver_engine():
